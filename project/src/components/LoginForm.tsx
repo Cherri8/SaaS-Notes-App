@@ -147,7 +147,7 @@ export default function LoginForm({ onLogin }: LoginFormProps) {
             ))}
           </div>
           <p className="mt-2 text-xs text-center text-gray-500">
-            All test accounts use password: "password"
+            All test accounts use password: &quot;password&quot;
           </p>
         </div>
       </div>

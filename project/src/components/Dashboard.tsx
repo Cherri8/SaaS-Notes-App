@@ -37,10 +37,6 @@ export default function Dashboard({ user, token, onLogout }: DashboardProps) {
   const [error, setError] = useState('');
   const [upgrading, setUpgrading] = useState(false);
 
-  useEffect(() => {
-    fetchNotes();
-  }, []);
-
   const fetchNotes = async () => {
     try {
       const response = await fetch('/api/notes', {
@@ -51,17 +47,21 @@ export default function Dashboard({ user, token, onLogout }: DashboardProps) {
 
       const data = await response.json();
 
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to fetch notes');
+      if (response.ok) {
+        setNotes(data.notes || []);
+      } else {
+        setError(data.error || 'Failed to fetch notes');
       }
-
-      setNotes(data.notes);
     } catch (err: any) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchNotes();
+  }, [token]);
 
   const handleCreateNote = async (title: string, content: string) => {
     try {
