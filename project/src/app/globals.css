@@ -14,3 +14,10 @@
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
 }
+
+/* Force Tailwind styles to load */
+@layer utilities {
+  .force-tailwind {
+    @apply block;
+  }
+}
