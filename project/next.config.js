@@ -3,6 +3,7 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  transpilePackages: ['tailwindcss'],
   async headers() {
     return [
       {
